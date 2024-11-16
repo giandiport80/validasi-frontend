@@ -1,32 +1,32 @@
 const messages = {
   id: {
-    required: 'Kolom ini harus diisi',
+    required: '{label} harus diisi',
     minlength: 'Minimal {minLength} karakter',
     maxlength: 'Maksimal {maxLength} karakter',
-    alphabetic: 'Kolom ini hanya boleh berisi huruf',
+    alphabetic: '{label} ini hanya boleh berisi huruf',
     specialChar:
-      'Kolom ini tidak boleh mengandung karakter khusus: {specialChars}',
+      '{label} tidak boleh mengandung karakter khusus: {specialChars}',
     number: 'Nilai harus berupa angka',
     minValue: 'Nilai harus lebih besar atau sama dengan {minValue}',
     maxValue: 'Nilai harus lebih kecil atau sama dengan {maxValue}',
     email: 'Format email tidak valid',
-    file: 'Kolom ini harus diisi dengan file',
+    file: '{label} harus diisi dengan file',
     fileType: 'Format file harus bertipe: {allowedExtensions}',
     fileSize: 'Ukuran file tidak boleh lebih dari {sizeLimit} {sizeUnit}',
     minselection: 'Minimal {minSelection} pilihan {label}.',
     maxselection: 'Maksimal {maxSelection} pilihan {label}.',
   },
   en: {
-    required: 'This field is required',
+    required: '{label} is required',
     minlength: 'Minimum {minLength} characters',
     maxlength: 'Maximum {maxLength} characters',
-    alphabetic: 'This field can only contain letters',
-    specialChar: 'This field cannot contain special characters: {specialChars}',
+    alphabetic: '{label} can only contain letters',
+    specialChar: '{label} cannot contain special characters: {specialChars}',
     number: 'Value must be a number',
     minValue: 'Value must be greater than or equal to {minValue}',
     maxValue: 'Value must be less than or equal to {maxValue}',
     email: 'Invalid email format',
-    file: 'This field must be filled with a file',
+    file: '{label} must be filled with a file',
     fileType: 'File format must be one of: {allowedExtensions}',
     fileSize: 'File size cannot exceed {sizeLimit} {sizeUnit}',
     minselection: 'Minimum {minSelection} selection for {label}.',
@@ -341,7 +341,7 @@ function validateOnInput(element, lang) {
 function validateOnSelect(element, lang) {
   const value = $(element).val();
   const required = $(element).data('required');
-  const label = $(element).data('label') || 'Pilih opsi'; // Ambil data-label jika ada
+  const label = $(element).data('label') || 'Kolom ini'; // Ambil data-label jika ada
   const langMessages = messages[lang] || messages.id; // Ambil pesan berdasarkan bahasa
 
   // Hapus pesan kesalahan sebelumnya
