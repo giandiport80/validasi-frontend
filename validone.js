@@ -103,11 +103,9 @@ function validationRadio(element, pesan) {
   $(element).closest('.radio-group').addClass('is-invalid');
 }
 
-function validationCheckbox(element, pesan) {
-  const group = $(element).closest('.checkbox-group');
-  group.find('.error').remove(); // Pastikan hanya ada satu pesan kesalahan
-  group.append(getErrorMessage(pesan)); // Menambahkan pesan kesalahan
-  group.addClass('is-invalid'); // Menambahkan class invalid
+function validationCheckboxRemove(element) {
+  $(element).closest('.checkbox-group').find('.error').remove();
+  $(element).closest('.checkbox-group').removeClass('is-invalid');
 }
 
 /**
@@ -121,10 +119,11 @@ function validationFile(element, pesan) {
   $(element).addClass('is-invalid');
 }
 
-function validationCheckbox(element, message) {
-  // Menampilkan pesan kesalahan setelah elemen input
-  $(element).after(`<div class="invalid-feedback">${message}</div>`);
-  $(element).addClass('is-invalid'); // Memberikan kelas 'is-invalid' pada input yang bermasalah
+function validationCheckbox(element, pesan) {
+  const group = $(element).closest('.checkbox-group');
+  group.find('.error').remove();
+  group.append(getErrorMessage(pesan));
+  group.addClass('is-invalid');
 }
 
 /**
@@ -463,7 +462,6 @@ function validateOnCheckbox(name, lang) {
 
   return true;
 }
-
 
 /**
  * Menginisialisasi validasi input oninput untuk elemen dengan kelas 'validate'.
