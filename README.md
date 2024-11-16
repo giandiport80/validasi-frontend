@@ -14,6 +14,7 @@ Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dike
 - **Validasi Elemen Select**: Memastikan pilihan dipilih dengan benar.
 - **Validasi Radio**: Memastikan setidaknya satu pilihan dipilih.
 - **Validasi Input File**: Memeriksa tipe dan ukuran file yang diunggah.
+- **Pesan multi Bahasa**: setting pesan multi bahasa (saat ini tersedia bahasa indonesia dan inggris)
 
 ## Atribut `data-` untuk Validasi Form
 
@@ -114,7 +115,7 @@ Buat elemen form dalam HTML dengan atribut yang sesuai untuk validasi. Berikut a
 
 Fungsi yang bisa digunakan untuk pengecekan form submit
 
-- **`initValidationOnInput()`**: Inisialisasi Validasi.
+- **`initValidationOnInput()`**: Inisialisasi Validasi. (default bahasa indonesia)
 - **`isValidForm()`**: cek apakah form nya valid, jika valid maka true, jika tidak valid maka false.
 
 
@@ -124,7 +125,8 @@ Fungsi yang bisa digunakan untuk pengecekan form submit
 <script>
   $(document).ready(function () {
     // inisialisasi input
-    initValidationOnInput();
+    initValidationOnInput(); // default bahasa indonesia
+    initValidationOnInput({lang: "en"}); // set lang ke bahasa inggris
 
     $('#myForm').on('submit', function (e) {
       e.preventDefault();

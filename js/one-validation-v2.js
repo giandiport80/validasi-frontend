@@ -109,11 +109,6 @@ function validationRadio(element, pesan) {
   $(element).closest('.radio-group').addClass('is-invalid');
 }
 
-function validationCheckboxRemove(element) {
-  $(element).closest('.checkbox-group').find('.error').remove();
-  $(element).closest('.checkbox-group').removeClass('is-invalid');
-}
-
 /**
  * Menampilkan pesan error untuk elemen input file.
  * @param {HTMLElement} element - Elemen input file yang divalidasi.
@@ -125,6 +120,11 @@ function validationFile(element, pesan) {
   $(element).addClass('is-invalid');
 }
 
+/**
+ * Menampilkan pesan error untuk elemen input checkbox.
+ * @param {HTMLElement} element - Elemen input file yang divalidasi.
+ * @param {string} pesan - Pesan error yang akan ditampilkan.
+ */
 function validationCheckbox(element, pesan) {
   const group = $(element).closest('.checkbox-group');
   group.find('.error').remove();
@@ -136,6 +136,11 @@ function validationCheckbox(element, pesan) {
  * Menghapus pesan error dari elemen input.
  * @param {HTMLElement} element - Elemen yang divalidasi.
  */
+function validationCheckboxRemove(element) {
+  $(element).closest('.checkbox-group').find('.error').remove();
+  $(element).closest('.checkbox-group').removeClass('is-invalid');
+}
+
 /**
  * Menghapus pesan error dari elemen input.
  * @param {HTMLElement} element - Elemen yang divalidasi.
@@ -194,6 +199,10 @@ function validationRadioRemove(element) {
   $(element).closest('.radio-group').removeClass('is-invalid');
 }
 
+/**
+ * Menghapus pesan error dari elemen checkbox.
+ * @param {HTMLElement} element - Elemen radio yang divalidasi.
+ */
 function validationCheckboxRemove(element) {
   const errorPlace = $(element).data('errorplace');
 
@@ -336,6 +345,7 @@ function validateOnInput(element, lang) {
 /**
  * Melakukan validasi pada elemen select dan select2.
  * @param {HTMLElement} element - Elemen select yang divalidasi.
+ * @param {string} lang bahasa
  * @returns {boolean} - Mengembalikan true jika valid, false jika tidak.
  */
 function validateOnSelect(element, lang) {
@@ -444,6 +454,12 @@ function validateOnFile(element, lang) {
   return true;
 }
 
+/**
+ * Melakukan validasi pada elemen input file.
+ * @param {HTMLElement} element - Elemen input file yang divalidasi.
+ * @returns {boolean} - Mengembalikan true jika valid, false jika tidak.
+ * @param {string} lang bahasa
+ */
 function validateOnCheckbox(name, lang) {
   // Memilih elemen checkbox berdasarkan name yang diberikan
   const element = $(`input[name="${name}"]`);
@@ -498,6 +514,7 @@ function validateOnCheckbox(name, lang) {
 /**
  * Menginisialisasi validasi input oninput untuk elemen dengan kelas 'validate'.
  * implementasi di script (bagian atas)
+ * @param {*} setting
  */
 function initValidationOnInput({ lang = 'id' } = {}) {
   currentLangValidation = lang;
