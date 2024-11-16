@@ -33,7 +33,7 @@
           <div class="form-group">
             <label for="nama">Nama | contoh data-errorplace <span class="error-nama"></span></label>
             <input type="text" name="name" class="form-control validate-text vl_name" data-required="true"
-              data-minlength="2" data-errorplace=".error-nama" />
+              data-minlength="2" data-errorplace=".error-nama" data-label="Nama" />
           </div>
 
           <div class="form-group">
@@ -71,7 +71,9 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="kategori">Kategori</label>
-            <select name="kategori" id="kategori" class="form-control validate-select vl_kategori" data-required="true">
+            <div class="error-kategori"></div>
+            <select name="kategori" id="kategori" class="form-control validate-select vl_kategori" data-required="true"
+              data-errorplace=".error-kategori">
               <option value="">Pilih Kategori</option>
               <option value="1">Kategori 1</option>
               <option value="2">Kategori 2</option>
@@ -80,8 +82,9 @@
 
           <div class="form-group">
             <label for="kategori2">Kategori Multiple</label>
+            <div class="error-multiple"></div>
             <select name="kategori2[]" id="kategori2" class="form-control select2 validate-select vl_kategori2"
-              data-required="true" multiple>
+              data-required="true" multiple data-errorplace=".error-multiple">
               <option value="">Pilih Kategori</option>
               <option value="1">Kategori 1</option>
               <option value="2">Kategori 2</option>
@@ -149,7 +152,7 @@
     href="https://cdn.jsdelivr.net/npm/select2-bootstrap4-theme@1.0.0/dist/select2-bootstrap4.min.css">
 
   <!-- <script src="validation-custom2.js"></script> -->
-  <script src="validone.js"></script>
+  <script src="one-validation.js"></script>
 
   <script>
     $(document).ready(function () {
@@ -181,7 +184,8 @@
       });
 
       $(document).ready(function () {
-        initValidationOnInput({ lang: "en" });
+        // initValidationOnInput({ lang: "en" });
+        initValidationOnInput(); // default lang: id
 
         // jika form edit, requirednya menjadi opsional pada form file
         $('[name=foto]').data("required", false);

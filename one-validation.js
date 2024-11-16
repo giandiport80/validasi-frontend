@@ -73,20 +73,26 @@ function validation(element, pesan) {
  * Menampilkan pesan error untuk elemen select dan select2.
  * @param {HTMLElement} element - Elemen yang divalidasi.
  * @param {string} pesan - Pesan error yang akan ditampilkan.
- * @param {string} lang - Bahasa yang dipilih
  */
-function validationSelect(element, pesan, lang) {
-  const label = $(element).data('label') || 'Kolom ini'; // Ambil data-label jika ada
-  const langMessages = messages[lang] || messages.id; // Ambil pesan berdasarkan bahasa
-  const customMessage = pesan.replace('Kolom ini', label); // Ganti 'Kolom ini' dengan label
+function validationSelect(element, pesan) {
+  const errorPlaceSelector = $(element).data('errorplace');
 
   if ($(element).hasClass('select2-hidden-accessible')) {
-    $(element).next('.select2-container').after(getErrorMessage(customMessage));
+    if (errorPlaceSelector) {
+      $(errorPlaceSelector).html(getErrorMessage(pesan));
+    } else {
+      $(element).next('.select2-container').after(getErrorMessage(pesan));
+    }
 
     $(element).next().find('.select2-selection').parent().addClass('has-error');
   } else {
     $(element).next('.error').remove();
-    $(element).after(getErrorMessage(customMessage));
+
+    if (errorPlaceSelector) {
+      $(errorPlaceSelector).html(getErrorMessage(pesan));
+    } else {
+      $(element).after(getErrorMessage(pesan));
+    }
 
     $(element).closest('.form-control').addClass('is-invalid');
   }
@@ -151,17 +157,20 @@ function validationRemove(element) {
  * @param {HTMLElement} element - Elemen yang divalidasi.
  */
 function validationSelectRemove(element) {
-  if ($(element).hasClass('select2-hidden-accessible')) {
-    $(element).next('.select2-container').next('.error').remove();
+  const errorPlace = $(element).data('errorplace') || element; // Ambil lokasi error dari data-errorplace
+  const target = $(errorPlace);
 
+  if ($(element).hasClass('select2-hidden-accessible')) {
+    // Jika elemen adalah Select2
+    target.closest('.form-group').find('.error').remove(); // Hapus pesan error
     $(element)
-      .next()
+      .next('.select2-container')
       .find('.select2-selection')
-      .parent()
-      .removeClass('has-error');
+      .removeClass('has-error'); // Hapus class error dari Select2
   } else {
-    $(element).next('.error').remove();
-    $(element).closest('.form-control').removeClass('is-invalid');
+    // Jika elemen adalah elemen biasa
+    target.closest('.form-group').find('.error').remove(); // Hapus pesan error
+    $(target).removeClass('is-invalid'); // Hapus class invalid
   }
 }
 
@@ -314,8 +323,10 @@ function validateOnSelect(element, lang) {
   const label = $(element).data('label') || 'Pilih opsi'; // Ambil data-label jika ada
   const langMessages = messages[lang] || messages.id; // Ambil pesan berdasarkan bahasa
 
+  // Hapus pesan kesalahan sebelumnya
   validationSelectRemove(element);
 
+  // Validasi jika opsi wajib dipilih
   if (required && (value === null || value === '' || value.length === 0)) {
     validationSelect(element, langMessages.required.replace('{label}', label));
     return false;
