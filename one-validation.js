@@ -157,20 +157,23 @@ function validationRemove(element) {
  * @param {HTMLElement} element - Elemen yang divalidasi.
  */
 function validationSelectRemove(element) {
-  const errorPlace = $(element).data('errorplace') || element; // Ambil lokasi error dari data-errorplace
-  const target = $(errorPlace);
+  const errorPlace = $(element).data('errorplace');
+
+  if (errorPlace) {
+    $(errorPlace).find('.error').remove();
+  }
 
   if ($(element).hasClass('select2-hidden-accessible')) {
-    // Jika elemen adalah Select2
-    target.closest('.form-group').find('.error').remove(); // Hapus pesan error
+    $(element).next('.select2-container').next('.error').remove();
+
     $(element)
-      .next('.select2-container')
+      .next()
       .find('.select2-selection')
-      .removeClass('has-error'); // Hapus class error dari Select2
+      .parent()
+      .removeClass('has-error');
   } else {
-    // Jika elemen adalah elemen biasa
-    target.closest('.form-group').find('.error').remove(); // Hapus pesan error
-    $(target).removeClass('is-invalid'); // Hapus class invalid
+    $(element).next('.error').remove();
+    $(element).closest('.form-control').removeClass('is-invalid');
   }
 }
 
@@ -181,11 +184,23 @@ function validationSelectRemove(element) {
  * @param {HTMLElement} element - Elemen radio yang divalidasi.
  */
 function validationRadioRemove(element) {
+  const errorPlace = $(element).data('errorplace');
+
+  if (errorPlace) {
+    $(errorPlace).find('.error').remove();
+  }
+
   $(element).closest('.radio-group').find('.error').remove();
   $(element).closest('.radio-group').removeClass('is-invalid');
 }
 
 function validationCheckboxRemove(element) {
+  const errorPlace = $(element).data('errorplace');
+
+  if (errorPlace) {
+    $(errorPlace).find('.error').remove();
+  }
+
   $(element).closest('.checkbox-group').find('.error').remove();
   $(element).closest('.checkbox-group').removeClass('is-invalid');
 }
@@ -195,6 +210,12 @@ function validationCheckboxRemove(element) {
  * @param {HTMLElement} element - Elemen input file yang divalidasi.
  */
 function validationFileRemove(element) {
+  const errorPlace = $(element).data('errorplace');
+
+  if (errorPlace) {
+    $(errorPlace).find('.error').remove();
+  }
+
   $(element).next('.error').remove();
   $(element).removeClass('is-invalid');
 }
