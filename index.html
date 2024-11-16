@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+  <title>Form Validation</title>
+
+  <style>
+    .has-error {
+      border: 1px solid red;
+      /* Gaya untuk border */
+      background-color: #f8d7da;
+      /* Gaya untuk background */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Form Validation</h5>
+        <form id="myForm">
+          <div class="form-group">
+            <label for="nama">Nama | contoh data-errorplace <span class="error-nama"></span></label>
+            <input type="text" name="name" class="form-control validate-text vl_name" data-required="true"
+              data-minlength="2" data-errorplace=".error-nama" />
+          </div>
+
+          <div class="form-group">
+            <label for="nama2">Nama 2</label>
+            <input type="text" name="name2" class="form-control validate-text vl_name2" data-required="true"
+              data-specialchar="*,%,$" />
+          </div>
+
+          <div class="form-group">
+            <label for="keterangan">Deskripsi</label>
+            <textarea name="keterangan" id="keterangan" class="form-control validate-text vl_keterangan"
+              data-required="true" data-minlength="8" data-maxlength="200"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" class="form-control validate-text vl_email" data-required="true"
+              data-email="true">
+          </div>
+
+          <div class="form-group">
+            <label for="angka">Input Angka</label>
+            <input type="text" name="angka" id="angka" class="form-control validate-text vl_angka" data-required="true"
+              data-isnumber="true" data-minvalue="10" data-maxvalue="100">
+          </div>
+
+          <div class="form-group">
+            <label for="kategori">Kategori</label>
+            <select name="kategori" id="kategori" class="form-control validate-select vl_kategori" data-required="true">
+              <option value="">Pilih Kategori</option>
+              <option value="1">Kategori 1</option>
+              <option value="2">Kategori 2</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="kategori2">Kategori Multiple</label>
+            <select name="kategori2[]" id="kategori2" class="form-control select2 validate-select vl_kategori2"
+              data-required="true" multiple>
+              <option value="">Pilih Kategori</option>
+              <option value="1">Kategori 1</option>
+              <option value="2">Kategori 2</option>
+              <option value="3">Kategori 3</option>
+              <option value="4">Kategori 4</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="kategoriSelect2">Kategori Select2</label>
+            <select name="kategoriSelect2" id="kategoriSelect2"
+              class="form-control select2 validate-select vl_kategoriSelect2" data-required="true">
+              <option value="">Pilih Kategori</option>
+              <option value="1">Kategori 1</option>
+              <option value="2">Kategori 2</option>
+            </select>
+          </div>
+
+          <div class="form-group radio-group">
+            <label>Pilih Jenis Kelamin:</label><br>
+            <input type="radio" name="gender" class="validate-radio vl_gender" data-required="true" value="Laki-laki">
+            <label for="gender">Laki-laki</label><br>
+            <input type="radio" name="gender" class="validate-radio vl_gender" data-required="true" value="Perempuan">
+            <label for="gender">Perempuan</label><br>
+          </div>
+
+          <div class="form-group">
+            <label for="gambar">Foto</label>
+            <small class="text-info">(Format file harus bertipe jpg,png,jpeg)</small>
+            <input type="file" name="foto" class="form-control validate-file vl_foto" data-required="true"
+              data-typesize="mb" data-extfile="jpg,png,jpeg" data-size="2">
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="form-label">Pilih makanan (minimal 1, maksimal 2)</label><br>
+            <div class="form-check">
+              <input class="form-check-input validate-checkbox" type="checkbox" name="food" value="Baso" id="food1"
+                data-required="true" data-minselection="1" data-maxselection="2" data-label="Makanan" />
+              <label class="form-check-label" for="food1">Baso</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input validate-checkbox" type="checkbox" name="food" value="Mie Ayam" id="food2"
+                data-required="true" data-minselection="1" data-maxselection="2" data-label="Makanan" />
+              <label class="form-check-label" for="food2">Mie Ayam</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input validate-checkbox" type="checkbox" name="food" value="Nasi Padang"
+                id="food3" data-required="true" data-minselection="1" data-maxselection="2" data-label="Makanan" />
+              <label class="form-check-label" for="food3">Nasi Padang</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/select2-bootstrap4-theme@1.0.0/dist/select2-bootstrap4.min.css">
+
+  <!-- <script src="validation-custom2.js"></script> -->
+  <script src="validone.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $(".select2").select2({
+        theme: "bootstrap4"
+      });
+
+      $('#myForm').on('submit', function (e) {
+        e.preventDefault();
+
+        if (!isValidForm()) {
+          // alert('Form tidak valid. Mohon periksa input Anda.');
+          return;
+        }
+
+        alert('Form valid. Submit berhasil.');
+
+        // const response = getError1();
+        // handleCodeIgniterError(response);
+
+        // const response = getError2();
+        // handleLaravelError(response);
+
+        // const response = getError1();
+        // handleCodeIgniterErrorClass(response);
+
+        // const response = getError2();
+        // handleLaravelErrorClass(response);
+      });
+
+      $(document).ready(function () {
+        initValidationOnInput({ lang: "en" });
+
+        // jika form edit, requirednya menjadi opsional pada form file
+        $('[name=foto]').data("required", false);
+      });
+
+      // error codeigniter 3
+      function getError1() {
+        return {
+          "error_class": [
+            "name",
+            "name2",
+            "keterangan",
+            "email",
+            "angka",
+            "kategori",
+            "kategori2",
+            "kategoriSelect2",
+            "gender",
+            "foto"
+          ],
+          "error_string": [
+            "Nama tidak boleh kosong.",
+            "Nama 2 tidak boleh mengandung karakter *, % atau $.",
+            "Deskripsi harus memiliki setidaknya 8 karakter.",
+            "Email harus berupa alamat email yang valid.",
+            "Nilai angka harus antara 10 dan 100.",
+            "Pilih kategori.",
+            "Pilih minimal satu kategori.",
+            "Pilih kategori untuk select2.",
+            "Pilih jenis kelamin.",
+            "File foto harus berupa jpg, png, jpeg, dan maksimal 2MB."
+          ],
+          "success": false,
+          "message": "Periksa kembali kolom inputan anda"
+        }
+      }
+
+      // error laravel
+      function getError2() {
+        return {
+          "message": "The given data was invalid.",
+          "errors": {
+            "name": ["Nama tidak boleh kosong."],
+            "name2": ["Nama 2 tidak boleh mengandung karakter *, % atau $."],
+            "keterangan": ["Deskripsi harus memiliki setidaknya 8 karakter."],
+            "email": ["Email harus berupa alamat email yang valid."],
+            "angka": ["Nilai angka harus antara 10 dan 100."],
+            "kategori": ["Pilih kategori."],
+            "kategori2": ["Pilih minimal satu kategori."],
+            "kategoriSelect2": ["Pilih kategori untuk select2."],
+            "gender": ["Pilih jenis kelamin."],
+            "foto": ["File foto harus berupa jpg, png, jpeg, dan maksimal 2MB."]
+          }
+        }
+      }
+
+    });
+  </script>
+</body>
+
+</html>
