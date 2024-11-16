@@ -1,8 +1,10 @@
-# Memperkenalkan 1Validation! first validate your data
+# Memperkenalkan 1Validation! first validate your data!
 
 ## Dokumentasi
 
 _Note: Gunakan v2 untuk versi terbaru_
+
+![image1](img/img1.png)
 
 Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dikembangkan menggunakan jQuery. Skrip ini menyediakan validasi untuk berbagai elemen form, termasuk input teks, textarea, select, radio, dan file.
 
@@ -50,6 +52,13 @@ Berikut adalah penjelasan tentang atribut data yang digunakan dalam validasi for
 - **`data-size`**: 
   Menentukan ukuran maksimum file yang diperbolehkan (dalam MB).
 
+- **`data-label`**: 
+  Menentukan nama input
+
+- **`data-errorplace`**: 
+Menentukan penempatan error input
+
+
 ## Penggunaan `vl_{name}`
 
 `vl_{name}` adalah konvensi penamaan untuk fungsi validasi yang digunakan dalam skrip JavaScript untuk memvalidasi input berdasarkan atribut data yang telah ditentukan. fungsi ini bisa menggantikan seleksi dengan `name` agar tangkapan input dari server bisa lebih akurat.
@@ -70,7 +79,7 @@ Buat elemen form dalam HTML dengan atribut yang sesuai untuk validasi. Berikut a
 
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" name="email" class="form-control validate vl_email" data-required="true" data-email="true" />
+    <input type="text" name="email" class="form-control validate-text vl_email" data-required="true" data-email="true" />
     <div class="invalid-feedback"></div>
   </div>
 
