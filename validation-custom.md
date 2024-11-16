@@ -1,4 +1,6 @@
-# Dokumentasi Validasi Form
+# Memperkenalkan 1Validation! first validate your data
+
+## Dokumentasi
 
 Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dikembangkan menggunakan jQuery. Skrip ini menyediakan validasi untuk berbagai elemen form, termasuk input teks, textarea, select, radio, dan file.
 
@@ -60,7 +62,7 @@ Buat elemen form dalam HTML dengan atribut yang sesuai untuk validasi. Berikut a
 <form id="myForm">
   <div class="form-group">
     <label for="nama">Nama</label>
-    <input type="text" name="name" class="form-control validate vl_name" data-required="true" data-alphabetic="true" />
+    <input type="text" name="name" class="form-control validate-text vl_name" data-required="true" data-alphabetic="true" />
     <div class="invalid-feedback"></div>
   </div>
 
@@ -107,7 +109,7 @@ Fungsi yang bisa digunakan untuk pengecekan form submit
 
 ```html
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="path/to/your/validation-custom2.js"></script>
+<script src="path/to/your/one-validation-v1.js"></script>
 <script>
   $(document).ready(function () {
     // inisialisasi input
