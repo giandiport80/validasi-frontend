@@ -116,7 +116,7 @@ Buat elemen form dalam HTML dengan atribut yang sesuai untuk validasi. Berikut a
 Fungsi yang bisa digunakan untuk pengecekan form submit
 
 - **`initValidationOnInput()`**: Inisialisasi Validasi. (default bahasa indonesia)
-- **`isValidForm()`**: cek apakah form nya valid, jika valid maka true, jika tidak valid maka false.
+- **`isValidForm(formSelector)`**: cek apakah form nya valid, jika valid maka true, jika tidak valid maka false.
 
 
 ```html
@@ -131,7 +131,7 @@ Fungsi yang bisa digunakan untuk pengecekan form submit
     $('#myForm').on('submit', function (e) {
       e.preventDefault();
 
-      if (!isValidForm()) {
+      if (!isValidForm("#myForm")) {
         // alert('Form tidak valid. Mohon periksa input Anda.');
         return;
       }

@@ -547,31 +547,32 @@ function initValidationOnInput({ lang = 'id' } = {}) {
 
 /**
  * Memeriksa validitas form sebelum disubmit.
- * implementasi di script
+ * @param {string} selector - Selector form yang ingin divalidasi (contoh: "#form_akses")
  * @returns {boolean} - Mengembalikan true jika form valid, false jika tidak.
  */
-function isValidForm() {
+function isValidForm(selector) {
   let isValid = true;
+  const $form = $(selector);
 
-  $('.validate-text').each(function () {
+  $form.find('.validate-text').each(function () {
     if (!validateOnInput(this, currentLangValidation)) {
       isValid = false;
     }
   });
 
-  $('.validate-select').each(function () {
+  $form.find('.validate-select').each(function () {
     if (!validateOnSelect(this, currentLangValidation)) {
       isValid = false;
     }
   });
 
-  $('.validate-radio').each(function () {
+  $form.find('.validate-radio').each(function () {
     if (!validateOnRadio($(this).attr('name'), currentLangValidation)) {
       isValid = false;
     }
   });
 
-  $('.validate-file').each(function () {
+  $form.find('.validate-file').each(function () {
     if (
       $(this).data('required') &&
       !validateOnFile(this, currentLangValidation)
@@ -580,7 +581,7 @@ function isValidForm() {
     }
   });
 
-  $('.validate-checkbox').each(function () {
+  $form.find('.validate-checkbox').each(function () {
     if (!validateOnCheckbox($(this).attr('name'), currentLangValidation)) {
       isValid = false;
     }
