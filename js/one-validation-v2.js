@@ -550,9 +550,9 @@ function initValidationOnInput({ lang = 'id' } = {}) {
  * @param {string} selector - Selector form yang ingin divalidasi (contoh: "#form_akses")
  * @returns {boolean} - Mengembalikan true jika form valid, false jika tidak.
  */
-function isValidForm(selector) {
+function isValidForm(selector = null) {
   let isValid = true;
-  const $form = $(selector);
+  const $form = selector ? $(selector) : $(document);
 
   $form.find('.validate-text').each(function () {
     if (!validateOnInput(this, currentLangValidation)) {

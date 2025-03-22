@@ -133,6 +133,18 @@
 
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
+    <hr>
+
+    <form action="" id="form2">
+      <div class="form-group">
+        <label for="nama">Nama1 | contoh</label>
+        <input type="text" name="name1" class="form-control validate-text vl_name" data-required="true"
+          data-minlength="2" data-label="Nama" />
+      </div>
+
+      <button class="btn btn-success">Simpan</button>
+    </form>
   </div>
 
 
@@ -159,10 +171,19 @@
         theme: "bootstrap4"
       });
 
+      $("#form2").on("submit", function (e) {
+        e.preventDefault();
+        if (!isValidForm("#form2")) {
+          return;
+        }
+
+        alert('Form valid. Submit berhasil. lagi');
+      });
+
       $('#myForm').on('submit', function (e) {
         e.preventDefault();
 
-        if (!isValidForm()) {
+        if (!isValidForm("#myForm")) {
           // alert('Form tidak valid. Mohon periksa input Anda.');
           return;
         }
