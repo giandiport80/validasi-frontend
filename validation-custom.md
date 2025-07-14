@@ -2,7 +2,7 @@
 
 ## Dokumentasi
 
-_Note: Gunakan v2 untuk versi terbaru_
+_Note: Gunakan v3 untuk versi terbaru_
 
 Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dikembangkan menggunakan jQuery. Skrip ini menyediakan validasi untuk berbagai elemen form, termasuk input teks, textarea, select, radio, dan file.
 
@@ -111,7 +111,7 @@ Fungsi yang bisa digunakan untuk pengecekan form submit
 
 ```html
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="path/to/your/one-validation-v1.js"></script>
+<script src="path/to/your/one-validation-v3.js"></script>
 <script>
   $(document).ready(function () {
     // inisialisasi input

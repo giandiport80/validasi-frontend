@@ -20,44 +20,44 @@ Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dike
 
 Berikut adalah penjelasan tentang atribut data yang digunakan dalam validasi form:
 
-- **`data-required`**: 
+- **`data-required (boolean)`**: 
   Menandakan bahwa kolom tersebut harus diisi.
   
-- **`data-alphabetic`**: 
+- **`data-alphabetic (boolean)`**: 
   Memastikan bahwa kolom hanya berisi huruf (A-Z, a-z).
   
-- **`data-specialchar`**: 
+- **`data-specialchar (boolean)`**: 
   Menentukan karakter khusus yang tidak diperbolehkan.
   
-- **`data-minlength`**: 
+- **`data-minlength (number)`**: 
   Menetapkan panjang minimum karakter.
   
-- **`data-maxlength`**: 
+- **`data-maxlength (number)`**: 
   Menetapkan panjang maksimum karakter.
   
-- **`data-email`**: 
+- **`data-email (boolean)`**: 
   Memastikan format email yang valid.
   
-- **`data-isnumber`**: 
+- **`data-isnumber (boolean)`**: 
   Memastikan bahwa input merupakan angka.
   
-- **`data-minvalue`**: 
+- **`data-minvalue (number)`**: 
   Menentukan nilai minimum yang diperbolehkan.
   
-- **`data-maxvalue`**: 
+- **`data-maxvalue (number)`**: 
   Menentukan nilai maksimum yang diperbolehkan.
   
-- **`data-extfile`**: 
+- **`data-extfile (string)`**: 
   Menentukan jenis file yang diperbolehkan untuk input file (misal: `jpg,png,pdf`).
   
-- **`data-size`**: 
+- **`data-size (number)`**: 
   Menentukan ukuran maksimum file yang diperbolehkan (dalam MB).
 
-- **`data-label`**: 
+- **`data-label (string)`**: 
   Menentukan nama input
 
-- **`data-errorplace`**: 
-Menentukan penempatan error input
+- **`data-errorplace (selector)`**: 
+Menentukan penempatan error input (selector css)
 
 
 ## Penggunaan `vl_{name}`
