@@ -2,7 +2,7 @@
 
 ## Dokumentasi
 
-_Note: Gunakan v2 untuk versi terbaru_
+_Note: Gunakan v3 untuk versi terbaru_
 
 ![image1](img/img1.png)
 
