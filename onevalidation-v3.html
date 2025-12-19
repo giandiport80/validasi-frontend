@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dokumentasi 1Validation</title>
+
+  <!-- Prism.js CSS (One Dark Pro Style) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #1a73e8;
+    }
+
+    h2 {
+      margin-top: 1.5em;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.3em;
+    }
+
+    code {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95em;
+    }
+
+    pre {
+      border-radius: 6px;
+      margin-bottom: 1.5em;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .note {
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin: 10px 0;
+      color: #856404;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Memperkenalkan 1Validation! first validate your data</h1>
+
+    <h2>Dokumentasi</h2>
+    <div class="note">
+      <strong>Note:</strong> Gunakan v3 untuk versi terbaru, <a
+        href="https://github.com/giandiport80/validasi-frontend/tree/main/js" target="_blank"
+        style="white-space: nowrap;">Klik disini</a>
+    </div>
+    <div>
+      <img src="img/img1.png" style="width: 100%;" alt="">
+    </div>
+    <p>Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dikembangkan menggunakan jQuery.
+      Skrip ini menyediakan validasi untuk berbagai elemen form, termasuk input teks, textarea, select, radio, dan file.
+    </p>
+
+    <h2>Fitur Validasi</h2>
+    <ul>
+      <li><strong>Validasi Input Teks</strong>: Memeriksa panjang, tipe, dan karakter khusus.</li>
+      <li><strong>Validasi Elemen Select</strong>: Memastikan pilihan dipilih dengan benar.</li>
+      <li><strong>Validasi Radio</strong>: Memastikan setidaknya satu pilihan dipilih.</li>
+      <li><strong>Validasi Input File</strong>: Memeriksa tipe dan ukuran file yang diunggah.</li>
+    </ul>
+
+    <h2>Atribut <code>data-</code> untuk Validasi Form</h2>
+    <ul>
+      <li><code>data-required (boolean)</code>: Menandakan bahwa kolom tersebut harus diisi.</li>
+      <li><code>data-alphabetic (boolean)</code>: Memastikan bahwa kolom hanya berisi huruf (A-Z, a-z).</li>
+      <li><code>data-specialchar (boolean)</code>: Menentukan karakter khusus yang tidak diperbolehkan.</li>
+      <li><code>data-minlength (number)</code>: Menetapkan panjang minimum karakter.</li>
+      <li><code>data-maxlength (number)</code>: Menetapkan panjang maksimum karakter.</li>
+      <li><code>data-email (boolean)</code>: Memastikan format email yang valid.</li>
+      <li><code>data-isnumber (boolean)</code>: Memastikan bahwa input merupakan angka.</li>
+      <li><code>data-minvalue (number)</code>: Menentukan nilai minimum yang diperbolehkan.</li>
+      <li><code>data-maxvalue (number)</code>: Menentukan nilai maksimum yang diperbolehkan.</li>
+      <li><code>data-extfile (string)</code>: Menentukan jenis file yang diperbolehkan untuk input file (misal:
+        <code>jpg,png,pdf</code>).
+      </li>
+      <li><code>data-size (number)</code>: Menentukan ukuran maksimum file yang diperbolehkan (dalam MB).</li>
+    </ul>
+
+    <h2>Penggunaan <code>vl_{name}</code></h2>
+    <p><code>vl_{name}</code> adalah konvensi penamaan untuk fungsi validasi yang digunakan dalam skrip JavaScript untuk
+      memvalidasi input berdasarkan atribut data yang telah ditentukan. Fungsi ini bisa menggantikan seleksi dengan
+      <code>name</code> agar tangkapan input dari server bisa lebih akurat.
+    </p>
+
+    <h2>Cara Menggunakan</h2>
+
+    <h3>1. Menyiapkan HTML</h3>
+    <pre><code class="language-html">&lt;form id="myForm"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="nama"&gt;Nama&lt;/label&gt;
+    &lt;input type="text" name="name" class="form-control validate-text vl_name" data-required="true" data-alphabetic="true" /&gt;
+    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="text" name="email" class="form-control validate vl_email" data-required="true" data-email="true" /&gt;
+    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="kategori"&gt;Kategori&lt;/label&gt;
+    &lt;select name="kategori" class="form-control validate-select vl_kategori" data-required="true"&gt;
+      &lt;option value=""&gt;Pilih Kategori&lt;/option&gt;
+      &lt;option value="1"&gt;Kategori 1&lt;/option&gt;
+      &lt;option value="2"&gt;Kategori 2&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group radio-group"&gt;
+    &lt;label&gt;Pilih Jenis Kelamin:&lt;/label&gt;&lt;br&gt;
+    &lt;input type="radio" name="gender" class="validate-radio vl_gender" data-required="true" value="Laki-laki"&gt; Laki-laki&lt;br&gt;
+    &lt;input type="radio" name="gender" class="validate-radio vl_gender" data-required="true" value="Perempuan"&gt; Perempuan&lt;br&gt;
+    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="file"&gt;File&lt;/label&gt;
+    &lt;input type="file" name="file" class="form-control validate-file vl_file" data-extfile="jpg,png,pdf" data-size="2" /&gt;
+    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+    <h3>2. Menambahkan Script JavaScript</h3>
+    <pre><code class="language-html">&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
+&lt;script src="path/to/your/one-validation-v3.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  $(document).ready(function () {
+    initValidationOnInput();
+
+    $('#myForm').on('submit', function (e) {
+      e.preventDefault();
+      if (!isValidForm("#myForm")) {
+        return;
+      }
+    });
+  });
+&lt;/script&gt;</code></pre>
+
+    <h2>Handling Error</h2>
+    <pre><code class="language-js">// contoh data dari error ajax
+const data = jqXHR.responseJSON;
+
+if (data.error_class && data.error_string) {
+    handleCodeIgniterError(data);
+} else if (data.errors) {
+    handleLaravelError(data);
+} else if (data.error_class && data.error_string) {
+    handleCodeIgniterErrorClass(data);
+} else if (data.errors) {
+    handleLaravelErrorClass(data);
+} else {
+    alert('Terjadi kesalahan. Silakan coba lagi.');
+}</code></pre>
+  </div>
+
+  <!-- Prism.js Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+</body>
+
+</html>

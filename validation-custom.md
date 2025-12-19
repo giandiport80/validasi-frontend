@@ -2,7 +2,7 @@
 
 ## Dokumentasi
 
-_Note: Gunakan v3 untuk versi terbaru_
+_Note: Gunakan v4 untuk versi terbaru_
 
 Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dikembangkan menggunakan jQuery. Skrip ini menyediakan validasi untuk berbagai elemen form, termasuk input teks, textarea, select, radio, dan file.
 
@@ -49,6 +49,9 @@ Berikut adalah penjelasan tentang atribut data yang digunakan dalam validasi for
   
 - **`data-size`**: 
   Menentukan ukuran maksimum file yang diperbolehkan (dalam MB).
+
+- **`data-nohtml`**: 
+Menentukan input tidak boleh mengandung tag html
 
 ## Penggunaan `vl_{name}`
 
@@ -125,6 +128,36 @@ Fungsi yang bisa digunakan untuk pengecekan form submit
         return;
       }
     });
+  });
+</script>
+```
+
+## FITUR BARU DI V4: validationFormRules
+```html
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="path/to/your/one-validation-v3.js"></script>
+<script>
+  $("#form").on("submit", function(e) {
+    e.preventDefault();
+
+    const rules = {
+      "#jenis_uraian_id": {
+        type: "select",
+        rules: ["required"]
+      },
+      "#deskripsi": {
+        type: "text",
+        rules: ["required", "no_html", "min:5"]
+      },
+      "is_active": {
+        type: "radio",
+        rules: ["required"]
+      }
+    };
+
+    if (!validateFormRules("#form", rules, )) {
+      return;
+    }
   });
 </script>
 ```

@@ -2,196 +2,280 @@
 <html lang="id">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dokumentasi 1Validation</title>
-
-  <!-- Prism.js CSS (One Dark Pro Style) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1Validation! - Dokumentasi Validasi Form jQuery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
-
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f6f9;
-      color: #333;
-      line-height: 1.6;
+      scroll-behavior: smooth;
+      background-color: #f8f9fa;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px 30px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    .sidebar {
+      position: sticky;
+      top: 2rem;
+      height: calc(100vh - 4rem);
+      overflow-y: auto;
     }
 
-    h1,
-    h2,
-    h3 {
-      color: #1a73e8;
+    .nav-link {
+      color: #495057;
     }
 
-    h2 {
-      margin-top: 1.5em;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 0.3em;
+    .nav-link.active {
+      font-weight: bold;
+      color: #0d6efd !important;
     }
 
-    code {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.95em;
+    .card {
+      border: none;
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+      margin-bottom: 2rem;
     }
 
     pre {
-      border-radius: 6px;
-      margin-bottom: 1.5em;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    .note {
-      background-color: #fff3cd;
-      border: 1px solid #ffeeba;
-      padding: 10px 15px;
-      border-radius: 5px;
-      margin: 10px 0;
-      color: #856404;
+      border-radius: 8px;
     }
   </style>
 </head>
 
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="#">✅ 1Validation! <span class="badge bg-primary">v4</span></a>
+    </div>
+  </nav>
+
   <div class="container">
-    <h1>Memperkenalkan 1Validation! first validate your data</h1>
+    <div class="row">
+      <div class="col-md-3 d-none d-md-block">
+        <div class="sidebar">
+          <h5>Navigasi</h5>
+          <nav class="nav flex-column">
+            <a class="nav-link" href="#fitur">Fitur Utama</a>
+            <a class="nav-link" href="#atribut">Atribut Data</a>
+            <a class="nav-link" href="#penggunaan">Cara Penggunaan</a>
+            <a class="nav-link" href="#fitur-v4">Fitur Baru (v4)</a>
+            <a class="nav-link" href="#error-handling">Handling Error</a>
+          </nav>
+        </div>
+      </div>
 
-    <h2>Dokumentasi</h2>
-    <div class="note">
-      <strong>Note:</strong> Gunakan v3 untuk versi terbaru, <a
-        href="https://github.com/giandiport80/validasi-frontend/tree/main/js" target="_blank"
-        style="white-space: nowrap;">Klik disini</a>
-    </div>
-    <div>
-      <img src="img/img1.png" style="width: 100%;" alt="">
-    </div>
-    <p>Dokumentasi ini menjelaskan cara menggunakan skrip validasi form yang telah dikembangkan menggunakan jQuery.
-      Skrip ini menyediakan validasi untuk berbagai elemen form, termasuk input teks, textarea, select, radio, dan file.
-    </p>
+      <div class="col-md-9">
+        <section id="header" class="mb-5">
+          <h1>Dokumentasi 1Validation!</h1>
+          <p class="lead">Memperkenalkan 1Validation! first validate your data</p>
+          <p>Untuk versi sebelumnya, silahkan <a href="onevalidation-v3.html" target="_blank">klik disini</a></p>
+          <hr>
+        </section>
 
-    <h2>Fitur Validasi</h2>
-    <ul>
-      <li><strong>Validasi Input Teks</strong>: Memeriksa panjang, tipe, dan karakter khusus.</li>
-      <li><strong>Validasi Elemen Select</strong>: Memastikan pilihan dipilih dengan benar.</li>
-      <li><strong>Validasi Radio</strong>: Memastikan setidaknya satu pilihan dipilih.</li>
-      <li><strong>Validasi Input File</strong>: Memeriksa tipe dan ukuran file yang diunggah.</li>
-    </ul>
+        <section id="fitur">
+          <div class="card">
+            <div class="card-body">
+              <h3>Fitur Validasi</h3>
+              <ul>
+                <li><strong>Input Teks:</strong> Panjang karakter, tipe, dan filter karakter khusus.</li>
+                <li><strong>Elemen Select:</strong> Memastikan opsi telah dipilih.</li>
+                <li><strong>Radio:</strong> Memastikan minimal satu pilihan terpilih.</li>
+                <li><strong>Input File:</strong> Validasi ekstensi dan ukuran file (MB).</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-    <h2>Atribut <code>data-</code> untuk Validasi Form</h2>
-    <ul>
-      <li><code>data-required (boolean)</code>: Menandakan bahwa kolom tersebut harus diisi.</li>
-      <li><code>data-alphabetic (boolean)</code>: Memastikan bahwa kolom hanya berisi huruf (A-Z, a-z).</li>
-      <li><code>data-specialchar (boolean)</code>: Menentukan karakter khusus yang tidak diperbolehkan.</li>
-      <li><code>data-minlength (number)</code>: Menetapkan panjang minimum karakter.</li>
-      <li><code>data-maxlength (number)</code>: Menetapkan panjang maksimum karakter.</li>
-      <li><code>data-email (boolean)</code>: Memastikan format email yang valid.</li>
-      <li><code>data-isnumber (boolean)</code>: Memastikan bahwa input merupakan angka.</li>
-      <li><code>data-minvalue (number)</code>: Menentukan nilai minimum yang diperbolehkan.</li>
-      <li><code>data-maxvalue (number)</code>: Menentukan nilai maksimum yang diperbolehkan.</li>
-      <li><code>data-extfile (string)</code>: Menentukan jenis file yang diperbolehkan untuk input file (misal:
-        <code>jpg,png,pdf</code>).
-      </li>
-      <li><code>data-size (number)</code>: Menentukan ukuran maksimum file yang diperbolehkan (dalam MB).</li>
-    </ul>
+        <section id="atribut">
+          <h3>Atribut <code>data-</code> untuk Validasi</h3>
+          <div class="table-responsive">
+            <table class="table table-bordered bg-white">
+              <thead class="table-light">
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>data-required</code></td>
+                  <td>Wajib diisi.</td>
+                </tr>
+                <tr>
+                  <td><code>data-alphabetic</code></td>
+                  <td>Hanya huruf (A-Z, a-z).</td>
+                </tr>
+                <tr>
+                  <td><code>data-specialchar</code></td>
+                  <td>Karakter khusus yang dilarang.</td>
+                </tr>
+                <tr>
+                  <td><code>data-minlength</code></td>
+                  <td>Minimal jumlah karakter.</td>
+                </tr>
+                <tr>
+                  <td><code>data-maxlength</code></td>
+                  <td>Maksimal jumlah karakter.</td>
+                </tr>
+                <tr>
+                  <td><code>data-email</code></td>
+                  <td>Format email valid.</td>
+                </tr>
+                <tr>
+                  <td><code>data-isnumber</code></td>
+                  <td>Hanya angka.</td>
+                </tr>
+                <tr>
+                  <td><code>data-extfile</code></td>
+                  <td>Ekstensi file (contoh: jpg,png).</td>
+                </tr>
+                <tr>
+                  <td><code>data-size</code></td>
+                  <td>Ukuran maksimal file (MB).</td>
+                </tr>
+                <tr>
+                  <td><code>data-nohtml</code></td>
+                  <td>Melarang tag HTML.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-    <h2>Penggunaan <code>vl_{name}</code></h2>
-    <p><code>vl_{name}</code> adalah konvensi penamaan untuk fungsi validasi yang digunakan dalam skrip JavaScript untuk
-      memvalidasi input berdasarkan atribut data yang telah ditentukan. Fungsi ini bisa menggantikan seleksi dengan
-      <code>name</code> agar tangkapan input dari server bisa lebih akurat.
-    </p>
-
-    <h2>Cara Menggunakan</h2>
-
-    <h3>1. Menyiapkan HTML</h3>
-    <pre><code class="language-html">&lt;form id="myForm"&gt;
+        <section id="penggunaan" class="mt-5">
+          <h3>Cara Menggunakan</h3>
+          <p>Siapkan form Anda dengan class <code>validate</code> dan atribut data yang diinginkan.</p>
+          <pre><code class="language-html">&lt;form id="myForm"&gt;
   &lt;div class="form-group"&gt;
-    &lt;label for="nama"&gt;Nama&lt;/label&gt;
+    &lt;label&gt;Nama&lt;/label&gt;
     &lt;input type="text" name="name" class="form-control validate-text vl_name" data-required="true" data-alphabetic="true" /&gt;
-    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class="form-group"&gt;
-    &lt;label for="email"&gt;Email&lt;/label&gt;
-    &lt;input type="text" name="email" class="form-control validate vl_email" data-required="true" data-email="true" /&gt;
-    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class="form-group"&gt;
-    &lt;label for="kategori"&gt;Kategori&lt;/label&gt;
-    &lt;select name="kategori" class="form-control validate-select vl_kategori" data-required="true"&gt;
-      &lt;option value=""&gt;Pilih Kategori&lt;/option&gt;
-      &lt;option value="1"&gt;Kategori 1&lt;/option&gt;
-      &lt;option value="2"&gt;Kategori 2&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class="form-group radio-group"&gt;
-    &lt;label&gt;Pilih Jenis Kelamin:&lt;/label&gt;&lt;br&gt;
-    &lt;input type="radio" name="gender" class="validate-radio vl_gender" data-required="true" value="Laki-laki"&gt; Laki-laki&lt;br&gt;
-    &lt;input type="radio" name="gender" class="validate-radio vl_gender" data-required="true" value="Perempuan"&gt; Perempuan&lt;br&gt;
-    &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-
-  &lt;div class="form-group"&gt;
-    &lt;label for="file"&gt;File&lt;/label&gt;
-    &lt;input type="file" name="file" class="form-control validate-file vl_file" data-extfile="jpg,png,pdf" data-size="2" /&gt;
     &lt;div class="invalid-feedback"&gt;&lt;/div&gt;
   &lt;/div&gt;
 
   &lt;button type="submit" class="btn btn-primary"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre>
+        </section>
 
-    <h3>2. Menambahkan Script JavaScript</h3>
-    <pre><code class="language-html">&lt;script src="https://code.jquery.com/jquery-3.6.0.min.js"&gt;&lt;/script&gt;
-&lt;script src="path/to/your/one-validation-v3.js"&gt;&lt;/script&gt;
-&lt;script&gt;
-  $(document).ready(function () {
-    initValidationOnInput();
+        <section id="fitur-v4" class="mt-5">
+          <div class="alert alert-info">
+            <h4>🚀 Baru di V4: validationFormRules</h4>
+            <p>Metode validasi berbasis objek yang lebih fleksibel tanpa mengotori HTML dengan banyak atribut data.</p>
+          </div>
 
-    $('#myForm').on('submit', function (e) {
-      e.preventDefault();
-      if (!isValidForm("#myForm")) {
-        return;
-      }
-    });
-  });
-&lt;/script&gt;</code></pre>
+          <section id="rules" class="mb-5">
+            <h3 class="fw-bold mb-4">Tabel Rules Lengkap</h3>
+            <div class="card p-3">
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead>
+                    <tr>
+                      <th>Rule / Atribut</th>
+                      <th>Tipe</th>
+                      <th>Deskripsi</th>
+                      <th>Contoh Objek (v4)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>required</code></td>
+                      <td>Semua</td>
+                      <td>Bidang tidak boleh kosong.</td>
+                      <td><code>["required"]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>alphabetic</code></td>
+                      <td>Text</td>
+                      <td>Hanya huruf (A-Z, a-z).</td>
+                      <td><code>["alphabetic"]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>email</code></td>
+                      <td>Text</td>
+                      <td>Format email valid.</td>
+                      <td><code>["email"]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>no_html</code></td>
+                      <td>Text</td>
+                      <td>Melarang tag HTML (Anti-XSS).</td>
+                      <td><code>["no_html"]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>min:{n}</code></td>
+                      <td>Text</td>
+                      <td>Minimal jumlah karakter.</td>
+                      <td><code>["min:5"]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>max:{n}</code></td>
+                      <td>Text</td>
+                      <td>Maksimal jumlah karakter.</td>
+                      <td><code>["max:20"]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>ext:{list}</code></td>
+                      <td>File</td>
+                      <td>Format file (jpg,png,pdf).</td>
+                      <td><code>["ext:pdf,docx"]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>size:{n}</code></td>
+                      <td>File</td>
+                      <td>Ukuran maksimal file (MB).</td>
+                      <td><code>["size:2"]</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
 
-    <h2>Handling Error</h2>
-    <pre><code class="language-js">// contoh data dari error ajax
+          <pre><code class="language-javascript">const rules = {
+  "#deskripsi": {
+    type: "text",
+    rules: ["required", "no_html", "min:5"]
+  },
+  "is_active": {
+    type: "radio",
+    rules: ["required"]
+  }
+};
+
+if (!validateFormRules("#form", rules)) {
+  return;
+}</code></pre>
+        </section>
+
+        <section id="error-handling" class="mt-5 mb-5">
+          <h3>Handling Error (Backend)</h3>
+          <p>1Validation! mendukung integrasi otomatis dengan pesan error dari Laravel atau CodeIgniter.</p>
+          <pre><code class="language-javascript">// contoh data dari error ajax
 const data = jqXHR.responseJSON;
 
 if (data.error_class && data.error_string) {
-    handleCodeIgniterError(data);
+  handleCodeIgniterError(data);
 } else if (data.errors) {
-    handleLaravelError(data);
+  handleLaravelError(data);
 } else if (data.error_class && data.error_string) {
-    handleCodeIgniterErrorClass(data);
+  handleCodeIgniterErrorClass(data);
 } else if (data.errors) {
-    handleLaravelErrorClass(data);
+  handleLaravelErrorClass(data);
 } else {
-    alert('Terjadi kesalahan. Silakan coba lagi.');
+  alert('Terjadi kesalahan. Silakan coba lagi.');
 }</code></pre>
+        </section>
+      </div>
+    </div>
   </div>
 
-  <!-- Prism.js Scripts -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p>© 2025 1Validation! Project. <a href="https://satubaris.vercel.app/">SatuBaris</a></p>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 </body>
 
 </html>
